@@ -2,6 +2,8 @@
 
 Alias Source Navigator is a JetBrains plugin that makes **Go to Declaration** follow generated TypeScript auto-import aliases to their original source exports.
 
+[JetBrains Marketplace](https://plugins.jetbrains.com/plugin/32888-alias-source-navigator) · [Releases](https://github.com/HassanDomeDenea/alias-source-navigator/releases)
+
 It is designed for Vue and Vite projects using tools such as [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import) and [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components).
 
 ## Why
@@ -25,7 +27,7 @@ The initial release handles relative module paths in `auto-imports.d.ts`, `impor
 
 ## Installation
 
-Build the plugin and install the ZIP from **Settings → Plugins → Install Plugin from Disk**:
+Install it from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/32888-alias-source-navigator), or build the plugin and install the ZIP from **Settings → Plugins → Install Plugin from Disk**:
 
 ```powershell
 .\gradlew.bat buildPlugin
