@@ -1,0 +1,41 @@
+<idea-plugin>
+    <id>io.github.hassandomedenea.alias-source-navigator</id>
+    <name>Alias Source Navigator</name>
+    <vendor email="hassan.domedenea@gmail.com" url="https://github.com/HassanDomeDenea">Hassan Dome Denea</vendor>
+
+    <description><![CDATA[
+        <p>
+            Makes <b>Go to Declaration</b> follow generated TypeScript auto-import aliases to their
+            original source exports.
+        </p>
+        <p>
+            Designed for Vue and Vite projects using tools such as unplugin-auto-import and
+            unplugin-vue-components. Instead of stopping in auto-imports.d.ts, imports.d.ts, or
+            components.d.ts, navigation continues to the referenced composable, store, or component.
+        </p>
+        <ul>
+            <li>Supports named exports and default component exports.</li>
+            <li>Handles relative typeof import(...) declaration aliases.</li>
+            <li>Leaves normal IDE navigation unchanged.</li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <p><b>0.1.0</b></p>
+        <ul>
+            <li>Initial release.</li>
+            <li>Redirects generated auto-import declarations to their original source exports.</li>
+        </ul>
+    ]]></change-notes>
+
+    <idea-version since-build="261"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>JavaScript</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <gotoDeclarationHandler
+            implementation="io.github.hassandomedenea.aliassourcenavigator.GeneratedAliasGotoDeclarationHandler"
+            order="first"/>
+    </extensions>
+</idea-plugin>
