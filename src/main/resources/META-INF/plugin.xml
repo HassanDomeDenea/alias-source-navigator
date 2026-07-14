@@ -5,22 +5,34 @@
 
     <description><![CDATA[
         <p>
-            Makes <b>Go to Declaration</b> follow generated TypeScript auto-import aliases to their
-            original source exports.
+            Connects generated TypeScript auto-import aliases to their original source exports for
+            both navigation and usage search.
         </p>
         <p>
             Designed for Vue and Vite projects using tools such as unplugin-auto-import and
             unplugin-vue-components. Instead of stopping in auto-imports.d.ts, imports.d.ts, or
             components.d.ts, navigation continues to the referenced composable, store, or component.
+            Find Usages on a source export also includes references resolved through those generated
+            declarations.
         </p>
         <ul>
             <li>Supports named exports and default component exports.</li>
             <li>Handles relative typeof import(...) declaration aliases.</li>
+            <li>Connects TypeScript and Vue auto-import usages back to source exports.</li>
             <li>Leaves normal IDE navigation unchanged.</li>
         </ul>
     ]]></description>
 
     <change-notes><![CDATA[
+        <p><b>0.2.1</b></p>
+        <ul>
+            <li>Fixes read-access exceptions when Find Usages runs on a background thread.</li>
+        </ul>
+        <p><b>0.2.0</b></p>
+        <ul>
+            <li>Adds reverse usage discovery from source exports through generated auto-import declarations.</li>
+            <li>Supports auto-imported usages in TypeScript and Vue consumers.</li>
+        </ul>
         <p><b>0.1.0</b></p>
         <ul>
             <li>Initial release.</li>
@@ -37,5 +49,7 @@
         <gotoDeclarationHandler
             implementation="io.github.hassandomedenea.aliassourcenavigator.GeneratedAliasGotoDeclarationHandler"
             order="first"/>
+        <referencesSearch
+            implementation="io.github.hassandomedenea.aliassourcenavigator.GeneratedAliasReferencesSearcher"/>
     </extensions>
 </idea-plugin>
