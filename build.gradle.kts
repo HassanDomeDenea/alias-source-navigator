@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.hassandomedenea"
-version = "0.1.0"
+version = "0.2.1"
 
 dependencies {
     intellijPlatform {
