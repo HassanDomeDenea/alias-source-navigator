@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.hassandomedenea"
-version = "0.2.1"
+version = "0.3.1"
 
 dependencies {
     intellijPlatform {
@@ -15,6 +15,7 @@ dependencies {
             phpstorm("2026.1.4")
         }
         bundledPlugin("JavaScript")
+        bundledPlugin("com.jetbrains.php")
     }
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
@@ -23,7 +24,8 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        // PhpStorm 2026.2+ ships on Java 25 class files.
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 

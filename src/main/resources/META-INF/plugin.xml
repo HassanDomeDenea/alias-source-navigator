@@ -15,15 +15,30 @@
             Find Usages on a source export also includes references resolved through those generated
             declarations.
         </p>
+        <p>
+            Also supports Laravel Wayfinder: navigating a generated controller method such as
+            <code>PatientController.autocomplete()</code> offers both the PHP controller method and
+            the Wayfinder named TypeScript export.
+        </p>
         <ul>
             <li>Supports named exports and default component exports.</li>
             <li>Handles relative typeof import(...) declaration aliases.</li>
             <li>Connects TypeScript and Vue auto-import usages back to source exports.</li>
-            <li>Leaves normal IDE navigation unchanged.</li>
+            <li>Jumps from Wayfinder route methods to PHP controller methods.</li>
+            <li>Leaves normal IDE navigation unchanged for non-alias symbols.</li>
         </ul>
     ]]></description>
 
     <change-notes><![CDATA[
+        <p><b>0.3.1</b></p>
+        <ul>
+            <li>Fixes Wayfinder PHP navigation so Goto Declaration shows both the PHP method and the named TypeScript export.</li>
+        </ul>
+        <p><b>0.3.0</b></p>
+        <ul>
+            <li>Adds Laravel Wayfinder navigation from generated route methods to PHP controller methods.</li>
+            <li>Offers dual targets for Wayfinder methods: PHP definition first, then the named TypeScript export.</li>
+        </ul>
         <p><b>0.2.1</b></p>
         <ul>
             <li>Fixes read-access exceptions when Find Usages runs on a background thread.</li>
@@ -44,8 +59,12 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>JavaScript</depends>
+    <depends>com.jetbrains.php</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <gotoDeclarationHandler
+            implementation="io.github.hassandomedenea.aliassourcenavigator.WayfinderGotoDeclarationHandler"
+            order="first"/>
         <gotoDeclarationHandler
             implementation="io.github.hassandomedenea.aliassourcenavigator.GeneratedAliasGotoDeclarationHandler"
             order="first"/>

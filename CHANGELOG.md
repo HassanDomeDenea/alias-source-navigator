@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.1 - 2026-07-20
+
+- Fix Wayfinder PHP target resolution when navigation starts from the exported method name offset.
+- Restore the dual-target chooser (PHP method + named TypeScript export) for Wayfinder route methods.
+
+## 0.3.0 - 2026-07-20
+
+- Add Laravel Wayfinder navigation for generated controller route methods.
+- On Goto Declaration for a Wayfinder method usage, offer the PHP controller method first and the named TypeScript export second.
+- Prefer the Wayfinder `export const <method>` declaration over the default-export object shorthand.
+
 ## 0.2.1 - 2026-07-14
 
 - Run generated declaration discovery and PSI resolution inside a cancellable read action.
